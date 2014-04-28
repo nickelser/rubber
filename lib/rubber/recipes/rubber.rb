@@ -111,9 +111,9 @@ namespace :rubber do
     rubber_instances.filtered.each do |ic|
       ic.roles.each do |role|
         opts = Rubber::Util::symbolize_keys(role.options).merge(:platform => ic.platform, :provider => ic.provider)
-        msg = "Auto role: #{role.name.to_sym} => #{ic.full_name}"
-        msg << ", #{opts.inspect}" if opts.inspect.size > 0
-        logger.info msg
+        #msg = "Auto role: #{role.name.to_sym} => #{ic.full_name}"
+        #msg << ", #{opts.inspect}" if opts.inspect.size > 0
+        #logger.info msg
         top.role role.name.to_sym, ic.full_name, opts
       end
     end

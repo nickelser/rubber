@@ -40,7 +40,8 @@ namespace :rubber do
       if [[ ! $installed_ruby_ver =~ $desired_ruby_ver ]]; then
         echo "Compiling and installing ruby $desired_ruby_ver.  This may take a while ..."
 
-        nohup ruby-build #{rubber_env.ruby_version} #{rubber_env.ruby_path} &> /tmp/install_ruby.log &
+        echo "Using patched ruby"
+        nohup curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | ruby-build --patch #{rubber_env.ruby_version} #{rubber_env.ruby_path} &> /tmp/install_ruby.log &
         bg_pid=$!
         sleep 1
 
